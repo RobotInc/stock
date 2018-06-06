@@ -121,7 +121,6 @@ class PageOneState extends State<PageOne> {
     return Card(
     child: new Column(
       mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         new Container(
           padding: new EdgeInsets.only(top: 16.0),
