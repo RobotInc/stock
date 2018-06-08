@@ -8,7 +8,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Stock',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.purple,
+
       ),
       home: MyHomePage(),
     );
@@ -24,13 +25,15 @@ class _MyHomePageState extends State<MyHomePage> {
   final Key keyOne = PageStorageKey('pageOne');
   final Key keyTwo = PageStorageKey('pageTwo');
   final Key keyThree = PageStorageKey('pageThree');
-  
+  final Key keyFour = PageStorageKey('pageFour');
+
 
   int currentTab = 0;
 
   PageOne one;
   PageTwo two;
   PageThree three;
+  PageFour four;
   List<Widget> pages;
   Widget currentPage;
 
@@ -59,8 +62,13 @@ class _MyHomePageState extends State<MyHomePage> {
       key: keyTwo,
     );
 
-    three = PageThree(key: keyThree,);
-    pages = [one, two, three];
+    three = PageThree(
+      key: keyThree,
+    );
+    four = PageFour(
+      key: keyFour,
+    );
+    pages = [one, two, three, four];
 
     currentPage = one;
 
@@ -88,14 +96,22 @@ class _MyHomePageState extends State<MyHomePage> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            title: Text('Home'),
+            backgroundColor: Colors.purple,
+            title: Text('Stock'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.help),
-            title: Text("Support"),
+            backgroundColor: Colors.purple,
+            title: Text("My Stock"),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.help),
+            backgroundColor: Colors.purple,
+            title: Text("Search"),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.face),
+            backgroundColor: Colors.purple,
             title: Text("Profile"),
           ),
         ],
@@ -103,6 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
 
 class PageOne extends StatefulWidget {
   
@@ -132,7 +149,7 @@ class PageOneState extends State<PageOne> {
               new Text(
                 'Home ',
                 style: new TextStyle(
-                  fontSize: 35.0,
+                  fontSize: 20.0,
                   fontFamily: 'Roboto',
                   color: new Color(0xFF26C6DA)
                 ),
@@ -169,9 +186,9 @@ class PageTwoState extends State<PageTwo> {
             children: <Widget>[
               
               new Text(
-                'Support ',
+                'My Stocks ',
                 style: new TextStyle(
-                  fontSize: 35.0,
+                  fontSize: 20.0,
                   fontFamily: 'Roboto',
                   color: new Color(0xFF26C6DA)
                 ),
@@ -208,9 +225,9 @@ class PageThreeState extends State<PageThree> {
             children: <Widget>[
               
               new Text(
-                'Profile ',
+                'Search ',
                 style: new TextStyle(
-                  fontSize: 35.0,
+                  fontSize: 20.0,
                   fontFamily: 'Roboto',
                   color: new Color(0xFF26C6DA)
                 ),
@@ -219,6 +236,44 @@ class PageThreeState extends State<PageThree> {
           ),
         ),
         
+      ],
+    ),
+    );
+  }
+}
+class PageFour extends StatefulWidget {
+  PageFour({Key key}) : super(key: key);
+
+  @override
+  PageFourState createState() => PageFourState();
+}
+
+class PageFourState extends State<PageFour> {
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+    child: new Column(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        new Container(
+          padding: new EdgeInsets.only(top: 16.0),
+          child: new Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+
+              new Text(
+                'Profile ',
+                style: new TextStyle(
+                  fontSize: 20.0,
+                  fontFamily: 'Roboto',
+                  color: new Color(0xFF26C6DA)
+                ),
+              )
+            ],
+          ),
+        ),
+
       ],
     ),
     );
